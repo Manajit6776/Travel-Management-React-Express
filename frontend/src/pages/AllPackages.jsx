@@ -6,7 +6,8 @@ const AllPackages = () => {
   const [packages, setPackages] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedType, setSelectedType] = useState('All');
-  const [maxPrice, setMaxPrice] = useState(10000);
+  const [maxPrice, setMaxPrice] = useState(840000);
+  const USD_TO_INR = 84;
 
   useEffect(() => {
     fetchPackages();
@@ -31,7 +32,7 @@ const AllPackages = () => {
                           (pkg.features && pkg.features.toLowerCase().includes(searchQuery.toLowerCase()));
     
     const matchesType = selectedType === 'All' || pkg.package_type === selectedType;
-    const matchesPrice = pkg.price <= maxPrice;
+    const matchesPrice = (pkg.price * USD_TO_INR) <= maxPrice;
 
     return matchesSearch && matchesType && matchesPrice;
   });
@@ -107,20 +108,20 @@ const AllPackages = () => {
           <div className="space-y-2">
             <div className="flex justify-between text-xs font-bold uppercase tracking-wider text-zinc-500">
               <span>Max Budget</span>
-              <span className="text-emerald-600">USD {maxPrice}</span>
+              <span className="text-emerald-600">₹{maxPrice.toLocaleString('en-IN')}</span>
             </div>
             <input
               type="range"
-              min="200"
-              max="10000"
-              step="100"
+              min="16800"
+              max="840000"
+              step="8400"
               className="w-full accent-emerald-600 bg-zinc-200 rounded-lg cursor-pointer h-1.5"
               value={maxPrice}
               onChange={(e) => setMaxPrice(parseInt(e.target.value))}
             />
             <div className="flex justify-between text-[10px] text-zinc-400">
-              <span>USD 200</span>
-              <span>USD 10,000</span>
+              <span>₹16,800</span>
+              <span>₹8,40,000</span>
             </div>
           </div>
         </aside>
@@ -181,7 +182,7 @@ const AllPackages = () => {
                     <div className="pt-4 border-t border-zinc-100 flex items-center justify-between">
                       <div className="flex flex-col">
                         <span className="text-[10px] text-zinc-400 font-medium">Starting at</span>
-                        <span className="text-lg font-black text-zinc-900">USD {pkg.price}</span>
+                        <span className="text-lg font-black text-zinc-900">₹{(pkg.price * USD_TO_INR).toLocaleString('en-IN')}</span>
                       </div>
                       <Link 
                         className="inline-flex items-center justify-center px-4.5 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl transition-colors shadow-sm" 

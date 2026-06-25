@@ -3,6 +3,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 
+const USD_TO_INR = 84;
+
 const Book = () => {
   const { id } = useParams();
   const [packageData, setPackageData] = useState(null);
@@ -112,7 +114,7 @@ const Book = () => {
               <div className="flex-1">
                 <h4 className="font-bold text-zinc-900 text-sm line-clamp-1">{packageData.package_name}</h4>
                 <p className="text-zinc-500 text-xs mt-0.5"><i className="fa-solid fa-location-dot mr-1"></i>{packageData.location}</p>
-                <p className="text-emerald-700 font-extrabold text-xs mt-1">USD {packageData.price}</p>
+                <p className="text-emerald-700 font-extrabold text-xs mt-1">₹{(packageData.price * USD_TO_INR).toLocaleString('en-IN')}</p>
               </div>
             </div>
 

@@ -8,9 +8,6 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="flex flex-col space-y-4">
             <Link to="/" className="flex items-center space-x-2 text-xl font-extrabold tracking-tight text-white">
-              <span className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white">
-                <i className="fa-solid fa-compass"></i>
-              </span>
               <span>Voyage Vista</span>
             </Link>
             <p className="text-sm text-zinc-400 max-w-sm">

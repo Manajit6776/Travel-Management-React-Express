@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 
+const USD_TO_INR = 84;
+
 const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
   const { user } = useAuth();
@@ -128,7 +130,7 @@ const MyBookings = () => {
                     </p>
                     <p>
                       <strong className="font-semibold text-zinc-700">Amount Charged:</strong>{' '}
-                      USD {booking.price}
+                      ₹{(booking.price * USD_TO_INR).toLocaleString('en-IN')}
                     </p>
                   </div>
 

@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+const USD_TO_INR = 84;
+
 const Home = () => {
   const [packages, setPackages] = useState([]);
 
@@ -113,7 +115,7 @@ const Home = () => {
                 <div className="pt-4 border-t border-zinc-100 flex items-center justify-between">
                   <div className="flex flex-col">
                     <span className="text-[10px] text-zinc-400 font-medium">Starting at</span>
-                    <span className="text-xl font-black text-zinc-900">USD {pkg.price}</span>
+                    <span className="text-xl font-black text-zinc-900">₹{(pkg.price * USD_TO_INR).toLocaleString('en-IN')}</span>
                   </div>
                   <Link 
                     className="inline-flex items-center justify-center px-4.5 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl transition-colors shadow-sm" 

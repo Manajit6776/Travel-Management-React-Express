@@ -37,7 +37,7 @@ const Contact = () => {
               </span>
               <div>
                 <h4 className="font-bold text-zinc-900 text-xs">Email Support</h4>
-                <p className="text-zinc-500 text-xs mt-0.5">support@voyagevista.com</p>
+                <p className="text-zinc-500 text-xs mt-0.5">Demo Email</p>
               </div>
             </div>
 
@@ -47,7 +47,7 @@ const Contact = () => {
               </span>
               <div>
                 <h4 className="font-bold text-zinc-900 text-xs">Phone Call</h4>
-                <p className="text-zinc-500 text-xs mt-0.5">+1 (555) 123-4567</p>
+                <p className="text-zinc-500 text-xs mt-0.5">Demo Phone Number</p>
               </div>
             </div>
 
@@ -57,7 +57,7 @@ const Contact = () => {
               </span>
               <div>
                 <h4 className="font-bold text-zinc-900 text-xs">Main Office</h4>
-                <p className="text-zinc-500 text-xs mt-0.5">123 Travel Street, Adventure City, TC 12345</p>
+                <p className="text-zinc-500 text-xs mt-0.5">Demo Adress</p>
               </div>
             </div>
           </div>

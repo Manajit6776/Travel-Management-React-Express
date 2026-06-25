@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 
+const USD_TO_INR = 84;
+
 const ManagePackages = () => {
   const [packages, setPackages] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -229,7 +231,7 @@ const ManagePackages = () => {
                         {pkg.package_type}
                       </span>
                     </td>
-                    <td className="px-6 py-4 font-bold text-zinc-950">USD {pkg.price}</td>
+                    <td className="px-6 py-4 font-bold text-zinc-950">₹{(pkg.price * USD_TO_INR).toLocaleString('en-IN')}</td>
                     <td className="px-6 py-4 text-right space-x-2">
                       <button 
                         onClick={() => handleEdit(pkg)}
@@ -288,7 +290,7 @@ const ManagePackages = () => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-zinc-700">Price (USD)</label>
+                  <label className="text-xs font-bold text-zinc-700">Price (₹ INR)</label>
                   <input
                     type="number"
                     step="0.01"

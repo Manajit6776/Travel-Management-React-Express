@@ -3,6 +3,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 
+const USD_TO_INR = 84;
+
 const PackageDetails = () => {
   const { id } = useParams();
   const [packageData, setPackageData] = useState(null);
@@ -71,7 +73,7 @@ const PackageDetails = () => {
             }}
           />
           <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full shadow-sm border border-white/20">
-            <span className="text-xs font-black text-emerald-700 uppercase tracking-wider">USD {packageData.price}</span>
+            <span className="text-xs font-black text-emerald-700 uppercase tracking-wider">₹{(packageData.price * USD_TO_INR).toLocaleString('en-IN')}</span>
           </div>
         </div>
 
@@ -117,7 +119,7 @@ const PackageDetails = () => {
           <div className="pt-6 border-t border-zinc-100 flex items-center justify-between gap-4">
             <div className="flex flex-col">
               <span className="text-xs text-zinc-400 font-medium">Pricing Quote</span>
-              <span className="text-2xl font-black text-zinc-900">USD {packageData.price}</span>
+              <span className="text-2xl font-black text-zinc-900">₹{(packageData.price * USD_TO_INR).toLocaleString('en-IN')}</span>
             </div>
             <button 
               onClick={handleBook}
